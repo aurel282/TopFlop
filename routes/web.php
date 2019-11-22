@@ -14,3 +14,27 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Client
+Route::get('/results', 'ResultController@getResult')
+     ->name('result');
+
+Route::get('/match/create', 'MatchController@getCreate')
+     ->name('match.create');
+Route::post('/match/create', 'MatchController@postCreate')
+     ->name('match.create');
+
+Route::get('/voter/create', 'VoterController@getCreate')
+     ->name('voter.create');
+Route::post('/voter/create', 'VoterController@postCreate')
+     ->name('voter.create');
+
+Route::get('/candidate/create', 'CandidateController@getCreate')
+     ->name('candidate.create');
+Route::post('/candidate/create', 'CandidateController@postCreate')
+     ->name('candidate.create');
+
+Route::get('/vote/create', 'VoteController@getCreate')
+     ->name('vote.create');
+Route::post('/vote/create', 'VoteController@postCreate')
+     ->name('vote.create');

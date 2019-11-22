@@ -69,6 +69,21 @@
 
             <div class="content">
 
+                <button class="ui button">Create Match</button>
+                <button class="ui button">Create Voter</button>
+                <button class="ui button">Create Candidate</button>
+
+                <br>
+                <br>
+
+                <button class="ui button">Vote</button>
+
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <button class="ui button">See Results</button>
             </div>
         </div>
     </body>
