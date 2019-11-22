@@ -13,9 +13,9 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+    })
+    ->name('home');
 
-// Client
 Route::get('/results', 'ResultController@getResult')
      ->name('result');
 
