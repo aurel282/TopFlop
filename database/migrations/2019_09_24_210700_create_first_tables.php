@@ -16,7 +16,7 @@ class CreateFirstTables extends Migration
         Schema::create('voter', function (Blueprint $table) {
             $table->increments('id');
             $table->text('name');
-            $table->text('firstName')->nullable();
+            $table->text('firstname')->nullable();
         });
 
         Schema::create('match', function (Blueprint $table) {

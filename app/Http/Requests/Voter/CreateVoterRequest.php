@@ -12,7 +12,7 @@ class CreateVoterRequest extends FormRequest
 	{
         return [
             'name' => 'required|string|max:50',
-            'firstname' => 'required|string|max:50',
+            'firstname' => 'nullable|string|max:50',
         ];
     }
 

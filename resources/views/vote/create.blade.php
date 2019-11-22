@@ -19,76 +19,46 @@
 
     <div class="two fields">
         <div class="field required">
-            {{ Form::label('lastname', trans('client.create.name_label')) }}
-            {{ Form::text('lastname', null, ['placeholder' => trans('client.create.name')]) }}
+            {{ Form::label('voter', trans('vote.create.name_label')) }}
+            {{ Form::select('voter', $voters, '',['class' => 'ui fluid normal dropdown']) }}
         </div>
         <div class="field required">
-            {{ Form::label('firstname', trans('client.create.firstname_label')) }}
-            {{ Form::text('firstname', null, ['placeholder' => trans('client.create.firstname')]) }}
+            {{ Form::label('match', trans('vote.create.name_label')) }}
+            {{ Form::select('match', $matches, '',['class' => 'ui fluid normal dropdown']) }}
         </div>
     </div>
     <br />
     <div class="two fields">
-        <div class="ten wide field">
-            {{ Form::label('email', trans('client.create.email_label')) }}
-            {{ Form::text('email', null, ['placeholder' => trans('client.create.email')]) }}
-        </div>
-        <div class="six wide field">
-            {{ Form::label('language_code', trans('client.create.language_label')) }}
-            {{ Form::select('language_code', [
-                    'FR' => 'FR',
-					'NL' => 'NL',
-					'En' => 'EN',
-            ],['class' => 'ui fluid normal dropdown']) }}
-        </div>
-    </div>
-    <br />
-    <div class="two fields">
-        <div class="twelve wide field">
-            {{ Form::label('phone_number', trans('client.create.phone_number_label')) }}
-            {{ Form::text('phone_number', null, ['placeholder' => trans('client.create.phone_number')]) }}
-        </div>
-    </div>
-    <div class="two fields">
-        <div class="twelve wide field">
-            {{ Form::label('mobile_number', trans('client.create.mobile_number_label')) }}
-            {{ Form::text('mobile_number', null, ['placeholder' => trans('client.create.mobile_number')]) }}
-        </div>
-    </div>
-    <div class="two fields">
-        <div class="field">
-            {{ Form::label('address[street]', trans('client.create.address.street_label')) }}
-            {{ Form::text('address[street]', '',  ['class'=>'', 'placeholder' => trans('client.create.address.street')]) }}
-        </div>
-        <div class="field">
-            {{ Form::label('address[number]', trans('client.create.address.number_label')) }}
-            {{ Form::text('address[number]', '',  ['class'=>'', 'placeholder' => trans('client.create.address.number')]) }}
-        </div>
-    </div>
-    <div class="three fields ">
-        <div class="field">
-            {{ Form::label('address[city]', trans('client.create.address.city_label')) }}
-            {{ Form::text('address[city]', '',  ['class'=>'', 'placeholder' => trans('client.create.address.city')]) }}
-        </div>
-        <div class="field">
-            {{ Form::label('address[zip_code]', trans('client.create.address.zip_code_label')) }}
-            {{ Form::text('address[zip_code]', '',  ['class'=>'', 'placeholder' => trans('client.create.address.zip_code')]) }}
-        </div>
-        <div class="field">
-            <label>@lang('client.create.address.country_label')</label>
+        <div class="field required">
+            <label>@lang('vote.create.top_labed')</label>
             <div class="ui fluid search selection dropdown">
-                <input type="hidden" name="address[country]">
+                <input type="hidden" name="top_candidate">
                 <i class="dropdown icon"></i>
-                <div class="default text">@lang('client.create.address.country')</div>
+                <div class="default text">@lang('vote.create.top_select_placeholder')</div>
                 <div class="menu">
-                    <div class="item" data-value="be"><i class="be flag"></i>Belgium</div>
-                    <div class="item" data-value="fr"><i class="fr flag"></i>France</div>
-                    <div class="item" data-value="nl"><i class="nl flag"></i>Netherlands</div>
-                    <div class="item" data-value="lu"><i class="lu flag"></i>Luxembourg</div>
+                    @foreach($candidates as $candidate)
+                        <div class="item" data-value="{{$candidate->id}}">{{$candidate->name}}</div>
+                    @endforeach
                 </div>
             </div>
+            {{ Form::textarea('top_text', null, ['placeholder' => trans('vote.create.top_text_placeholder')]) }}
+        </div>
+        <div class="field required">
+            <label>@lang('vote.create.flop_labed')</label>
+            <div class="ui fluid search selection dropdown">
+                <input type="hidden" name="flop_candidate">
+                <i class="dropdown icon"></i>
+                <div class="default text">@lang('vote.create.flop_select_placeholder')</div>
+                <div class="menu">
+                    @foreach($candidates as $candidate)
+                        <div class="item" data-value="{{$candidate->id}}">{{$candidate->name}}</div>
+                    @endforeach
+                </div>
+            </div>
+            {{ Form::textarea('flop_text', null, ['placeholder' => trans('vote.create.flop_text_placeholder')]) }}
         </div>
     </div>
+
 
     @parent
 

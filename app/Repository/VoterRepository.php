@@ -25,6 +25,7 @@ class VoterRepository extends AbstractRepository
     {
         return Voter::create([
             'name' => $request['name'],
+            'firstname' => key_exists('firstname',$request)? $request['firstname'] : '',
         ]);
     }
 
