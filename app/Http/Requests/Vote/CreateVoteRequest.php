@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Requests\Client;
+namespace App\Http\Requests\Vote;
 
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateMatchRequest extends FormRequest
+class CreateVoteRequest extends FormRequest
 {
 
 	public function rules()
 	{
         return [
             'name' => 'required|string|max:50',
-            'date' => 'required|datetime',
+            'date' => 'required|date',
         ];
     }
 

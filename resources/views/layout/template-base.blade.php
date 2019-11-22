@@ -161,13 +161,16 @@
 		<div class="hero-inner">
 			{{-- Start - Navigation content --}}
 			@section('navigation')
+
 				<nav class="besaas-menu">
-					@include('layout.components.personal_navigation')
-					{!! $menuMain !!}
+					{{-- @include('layout.components.personal_navigation')  --}}
+					<!-- {#!! $menuMain !!#} -->
 				</nav>
-				<header>
-					<button id="button-main-menu" type="button" class="button-main-menu style3 open"></button>
-				</header>
+                <!--
+                <header>
+                    <button id="button-main-menu" type="button" class="button-main-menu style3 open"></button>
+                </header>
+                 -->
 			@show
 			{{-- End - Navigation content--}}
 
@@ -195,7 +198,7 @@
 	@section('javascript' )
 	@show
 	<script>
-		var button = $(".button-main-menu.style3.open");
+		//var button = $(".button-main-menu.style3.open");
 		var main = $("main");
 		$('.ui.dropdown')
 				.dropdown()

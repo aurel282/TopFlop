@@ -20,4 +20,14 @@ class MatchService extends AbstractService
         parent::__construct();
         $this->_matchRepository = $matchRepository;
     }
+
+    public function createMatch(array $data)
+    {
+
+    }
+
+    public function getAllMatches()
+    {
+
+    }
 }

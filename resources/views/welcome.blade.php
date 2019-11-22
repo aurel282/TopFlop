@@ -69,7 +69,7 @@
 
             <div class="content">
 
-                <button class="ui button">Create Match</button>
+                <button class="ui button" onclick="window.location='{{ route('match.create') }}'">Create Match</button>
                 <button class="ui button">Create Voter</button>
                 <button class="ui button">Create Candidate</button>
 

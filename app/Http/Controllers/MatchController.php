@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Requests\Client\CreateMatchRequest;
+use App\Http\Requests\Match\CreateMatchRequest;
 use App\Service\MatchService;
 
 class MatchController extends Controller

@@ -1,9 +1,9 @@
 @extends('layout.template-form')
 
 @section('adminHeader')
-    <h2 class="ui dividing header">@lang('client.create.title')
+    <h2 class="ui dividing header">@lang('vote.create.title')
         <span style="font-size: 14px;">
-         - @lang('client.create.subtitle')
+         - @lang('vote.create.subtitle')
         </span>
     </h2>
 @endsection
@@ -11,7 +11,7 @@
 @section('containerContent')
     <h2 class="ui header dividing" style="background: #e8ecf1; padding: 10px;">
         <div class="content">
-            <div class="sub header">@lang('client.create.help')</div>
+            <div class="sub header">@lang('vote.create.help')</div>
         </div>
     </h2>
     <br />
