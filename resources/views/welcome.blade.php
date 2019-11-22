@@ -69,21 +69,21 @@
 
             <div class="content">
 
-                <button class="ui button" onclick="window.location='{{ route('match.create') }}'">Create Match</button>
-                <button class="ui button">Create Voter</button>
-                <button class="ui button">Create Candidate</button>
+                <button class="ui button" onclick="window.location='{{ route('match.create') }}'">@lang('main.match_create')</button>
+                <button class="ui button">@lang('main.voter_create')</button>
+                <button class="ui button">@lang('main.candidate_create')</button>
 
                 <br>
                 <br>
 
-                <button class="ui button">Vote</button>
+                <button class="ui button">@lang('main.vote')</button>
 
                 <br>
                 <br>
                 <br>
                 <br>
 
-                <button class="ui button">See Results</button>
+                <button class="ui button">@lang('main.see_results')</button>
             </div>
         </div>
     </body>
