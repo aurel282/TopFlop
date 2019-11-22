@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Requests\Match;
+namespace App\Http\Requests\Candidate;
 
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateMatchRequest extends FormRequest
+class CreateCandidateRequest extends FormRequest
 {
 
 	public function rules()
 	{
         return [
-            'opponent' => 'required|string|max:50',
-            'date' => 'required|date',
+            'name' => 'required|string|max:50',
         ];
     }
 

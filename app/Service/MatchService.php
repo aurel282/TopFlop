@@ -4,7 +4,9 @@ namespace App\Service;
 
 
 
+use App\Models\Database\Match;
 use App\Repository\MatchRepository;
+use Illuminate\Database\Eloquent\Collection;
 
 class MatchService extends AbstractService
 {
@@ -21,13 +23,13 @@ class MatchService extends AbstractService
         $this->_matchRepository = $matchRepository;
     }
 
-    public function createMatch(array $data)
+    public function createMatch(array $data): Match
     {
-
+        return $this->_matchRepository->create($data);
     }
 
-    public function getAllMatches()
+    public function getAllMatches(): Collection
     {
-
+        return $this->_matchRepository->getAll()->get();
     }
 }

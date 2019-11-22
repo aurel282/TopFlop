@@ -19,8 +19,8 @@
 
     <div class="two fields">
         <div class="field required">
-            {{ Form::label('name', trans('match.create.name_label')) }}
-            {{ Form::text('name', null, ['placeholder' => trans('match.create.name')]) }}
+            {{ Form::label('opponent', trans('match.create.opponent_label')) }}
+            {{ Form::text('opponent', null, ['placeholder' => trans('match.create.opponent')]) }}
         </div>
         <div class="field required">
             {{ Form::label('date', trans('match.create.date_label')) }}

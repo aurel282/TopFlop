@@ -12,7 +12,7 @@ class CreateVoterRequest extends FormRequest
 	{
         return [
             'name' => 'required|string|max:50',
-            'date' => 'required|date',
+            'firstname' => 'required|string|max:50',
         ];
     }
 
