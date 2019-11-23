@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 
 
+use App\Http\Requests\Vote\CreateVoteRequest;
 use App\Service\CandidateService;
 use App\Service\MatchService;
 use App\Service\VoterService;
+use App\Service\VoteService;
 
 class VoteController extends Controller
 {
@@ -34,7 +36,7 @@ class VoteController extends Controller
 
     public function postCreate(
         CreateVoteRequest $request,
-        VoteServic $voteService
+        VoteService $voteService
     )
     {
         $voteService->createVote($request->all());

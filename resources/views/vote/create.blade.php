@@ -20,41 +20,23 @@
     <div class="two fields">
         <div class="field required">
             {{ Form::label('voter', trans('vote.create.name_label')) }}
-            {{ Form::select('voter', $voters, '',['class' => 'ui fluid normal dropdown']) }}
+            {{ Form::select('voter', $voters->pluck('name', 'id'), '',['class' => 'ui fluid normal dropdown']) }}
         </div>
         <div class="field required">
             {{ Form::label('match', trans('vote.create.name_label')) }}
-            {{ Form::select('match', $matches, '',['class' => 'ui fluid normal dropdown']) }}
+            {{ Form::select('match', $matches->pluck('opponent', 'id'), '',['class' => 'ui fluid normal dropdown']) }}
         </div>
     </div>
     <br />
     <div class="two fields">
         <div class="field required">
-            <label>@lang('vote.create.top_labed')</label>
-            <div class="ui fluid search selection dropdown">
-                <input type="hidden" name="top_candidate">
-                <i class="dropdown icon"></i>
-                <div class="default text">@lang('vote.create.top_select_placeholder')</div>
-                <div class="menu">
-                    @foreach($candidates as $candidate)
-                        <div class="item" data-value="{{$candidate->id}}">{{$candidate->name}}</div>
-                    @endforeach
-                </div>
-            </div>
+            {{ Form::label('top_candidate', trans('vote.create.top_labed')) }}
+            {{ Form::select('top_candidate', $candidates->pluck('name', 'id'), '',['class' => 'ui fluid normal dropdown']) }}
             {{ Form::textarea('top_text', null, ['placeholder' => trans('vote.create.top_text_placeholder')]) }}
         </div>
         <div class="field required">
-            <label>@lang('vote.create.flop_labed')</label>
-            <div class="ui fluid search selection dropdown">
-                <input type="hidden" name="flop_candidate">
-                <i class="dropdown icon"></i>
-                <div class="default text">@lang('vote.create.flop_select_placeholder')</div>
-                <div class="menu">
-                    @foreach($candidates as $candidate)
-                        <div class="item" data-value="{{$candidate->id}}">{{$candidate->name}}</div>
-                    @endforeach
-                </div>
-            </div>
+            {{ Form::label('flop_candidate', trans('vote.create.flop_labed')) }}
+            {{ Form::select('flop_candidate', $candidates->pluck('name', 'id'), '',['class' => 'ui fluid normal dropdown']) }}
             {{ Form::textarea('flop_text', null, ['placeholder' => trans('vote.create.flop_text_placeholder')]) }}
         </div>
     </div>

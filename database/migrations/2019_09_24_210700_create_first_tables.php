@@ -44,7 +44,8 @@ class CreateFirstTables extends Migration
         });
 
 
-        Schema::create('has_voted', function (Blueprint $table) {
+        Schema::create('voter_match', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('match_id')->unsigned();
             $table->foreign('match_id')->references('id')->on('match');
             $table->integer('voter_id')->unsigned();
@@ -63,6 +64,6 @@ class CreateFirstTables extends Migration
         Schema::dropIfExists('match');
         Schema::dropIfExists('candidate');
         Schema::dropIfExists('vote');
-        Schema::dropIfExists('has_voted');
+        Schema::dropIfExists('voter_match');
     }
 }

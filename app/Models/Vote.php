@@ -14,17 +14,24 @@ class Vote extends Eloquent
 
     public $timestamps = false;
 
+    protected $casts = [
+        'match_id' => 'int',
+        'flop_candidate_id' => 'int',
+        'top_candidate_id' => 'int',
+
+    ];
+
 
     protected $fillable = [
-        'opponent',
-        'date',
+        'match_id',
+        'flop',
+        'flop_candidate_id',
+        'top',
+        'top_candidate_id',
+        'is_read',
     ];
 
     /**
-
-    protected $casts = [
-        'address_id' => 'int'
-    ];
 
     public function address()
     {

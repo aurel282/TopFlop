@@ -20,6 +20,11 @@ class Match extends Eloquent
         'date',
     ];
 
+    public function voters()
+    {
+        return $this->belongsToMany(Voter::class);
+    }
+
     /**
 
     protected $casts = [

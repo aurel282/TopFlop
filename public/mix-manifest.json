@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/css/semantic.min.css": "/css/semantic.min.css",
-    "/js/semantic.min.js": "/js/semantic.min.js"
+    "/css/main.css": "/css/main.css",
+    "/js/allDates.js": "/js/allDates.js",
+    "/js/global.js": "/js/global.js"
 }

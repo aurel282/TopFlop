@@ -11,8 +11,12 @@ class CreateVoteRequest extends FormRequest
 	public function rules()
 	{
         return [
-            'name' => 'required|string|max:50',
-            'date' => 'required|date',
+            'voter' => 'required|int',
+            'match' => 'required|int',
+            'top_candidate' => 'required|int',
+            'flop_candidate' => 'required|int',
+            'top_text' => 'required|string',
+            'flop_text' => 'required|string',
         ];
     }
 

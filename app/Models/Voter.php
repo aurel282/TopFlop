@@ -20,16 +20,18 @@ class Voter extends Eloquent
         'firstname',
     ];
 
+    public function matches()
+    {
+        return $this->belongsToMany(Match::class,'voter_match', 'voter_id', 'match_id');
+    }
+
+
     /**
 
     protected $casts = [
         'address_id' => 'int'
     ];
 
-    public function address()
-    {
-        return $this->belongsTo(Address::class);
-    }
 
     public function products()
     {

@@ -37,4 +37,16 @@ class MatchRepository extends AbstractRepository
         return Match::query();
     }
 
+    /**
+     * @param int $match_id
+     *
+     * @return Match|null
+     */
+    public function getVoterById(int $match_id): ?Match
+    {
+        return Match::query()
+                    ->where('id', $match_id)
+                    ->first();
+    }
+
 }
