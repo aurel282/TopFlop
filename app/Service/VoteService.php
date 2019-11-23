@@ -55,13 +55,29 @@ class VoteService extends AbstractService
         }
     }
 
+    /**
+     * @return Collection
+     */
     public function getAllVotes(): Collection
     {
         return $this->_voteRepository->getAll()->get();
     }
 
+    /**
+     * @return bool
+     */
     public function voterHasVoted(): Boolean
     {
         return $this->_voteRepository->getAll()->get();
+    }
+
+    /**
+     * @param Match $match
+     *
+     * @return Collection
+     */
+    public function getUnreadVotesByMatch(Match $match): Collection
+    {
+        return $this->_voteRepository->getUnreadVotesByMatch($match)->get();
     }
 }

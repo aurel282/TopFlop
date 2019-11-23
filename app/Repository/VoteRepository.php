@@ -47,7 +47,7 @@ class VoteRepository extends AbstractRepository
     /**
      * @return Builder
      */
-    public function getUnreadVoteByMatch(Match $match): Builder
+    public function getUnreadVotesByMatch(Match $match): Builder
     {
         return Vote::query()
             ->where('is_read', false)
