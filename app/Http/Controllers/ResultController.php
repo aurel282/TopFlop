@@ -8,6 +8,7 @@ use App\Http\Requests\Result\ResultSelectMatchRequest;
 use App\Models\Database\Match;
 use App\Service\MatchService;
 use App\Service\VoteService;
+use Illuminate\Http\Request;
 
 class ResultController extends Controller
 {
@@ -49,15 +50,19 @@ class ResultController extends Controller
         VoteService $voteService
     )
     {
+
         $votes = $voteService->getUnreadVotesByMatch($match);
 
         if(count($votes) > 0)
         {
+            $vote = $votes->random();
+            session()->flash('vote_id', $vote->id);
+
             return view(
                 'result.result_vote',
                 [
                     'match' => $match,
-                    'vote' => $votes->random()
+                    'vote' => $vote
                 ]
             );
         }
@@ -71,11 +76,15 @@ class ResultController extends Controller
 
     public function postReadVote(
         Match $match,
-        VoteService $voteService
+        VoteService $voteService,
+        Request $request
     )
     {
-        $votes = $voteService->getUnreadVotesByMatch($match);
+        $vote = $request->session()->get('vote_id');
+        $vote = $voteService->getVoteById($vote);
+        $voteService->setRead($vote);
 
+        $votes = $voteService->getUnreadVotesByMatch($match);
 
         if(count($votes) > 0)
         {
@@ -89,8 +98,17 @@ class ResultController extends Controller
         }
         else
         {
+            $tops = '';
+            $flops = '';
+            $ghosts = '';
             return view(
-                'result.result_final'
+                'result.result_final',
+                [
+                    'match' => $match,
+                    'tops' => $tops,
+                    'flops' => $flops,
+                    'ghosts' => $ghosts
+                ]
             );
         }
     }

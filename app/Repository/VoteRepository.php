@@ -7,6 +7,7 @@ use App\Models\Database\Match;
 use App\Models\Database\Vote;
 use App\Models\Database\Voter;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use phpDocumentor\Reflection\Types\Boolean;
 
 class VoteRepository extends AbstractRepository
@@ -54,6 +55,29 @@ class VoteRepository extends AbstractRepository
             ->where('match_id', $match->id);
     }
 
+    /**
+     * @return Builder
+     */
+    public function setRead(Vote $vote): bool
+    {
+        return $vote->update(
+            [
+                'is_read' => true
+            ]
+        );
+    }
+
+    /**
+     * @param int $vote_id
+     *
+     * @return Vote|null
+     */
+    public function getVoteById(int $vote_id): ?Model
+    {
+        return Vote::query()
+                   ->where('id', $vote_id)
+                   ->first();
+    }
 
 
 }

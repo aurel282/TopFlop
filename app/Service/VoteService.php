@@ -80,4 +80,24 @@ class VoteService extends AbstractService
     {
         return $this->_voteRepository->getUnreadVotesByMatch($match)->get();
     }
+
+    /**
+     * @param Vote $vote
+     *
+     * @return bool
+     */
+    public function setRead(Vote $vote): bool
+    {
+        return $this->_voteRepository->setRead($vote);
+    }
+
+    /**
+     * @param int $vote_id
+     *
+     * @return ?Vote
+     */
+    public function getVoteById(Vote $vote_id): ?Vote
+    {
+        return $this->_voteRepository->getVoteById($vote_id);
+    }
 }
