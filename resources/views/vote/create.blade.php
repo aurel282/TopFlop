@@ -19,11 +19,11 @@
 
     <div class="two fields">
         <div class="field required">
-            {{ Form::label('voter', trans('vote.create.name_label')) }}
+            {{ Form::label('voter', trans('vote.create.voter_label')) }}
             {{ Form::select('voter', $voters->pluck('name', 'id'), '',['class' => 'ui fluid normal dropdown']) }}
         </div>
         <div class="field required">
-            {{ Form::label('match', trans('vote.create.name_label')) }}
+            {{ Form::label('match', trans('vote.create.match_label')) }}
             {{ Form::select('match', $matches->pluck('opponent', 'id'), '',['class' => 'ui fluid normal dropdown']) }}
         </div>
     </div>

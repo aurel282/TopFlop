@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>TopFlop</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -85,7 +85,7 @@
                 <br>
                 <br>
 
-                <button class="ui button">@lang('main.see_results')</button>
+                <button class="ui button" onclick="window.location='{{ route('result.select_match') }}'">@lang('main.see_results')</button>
             </div>
         </div>
     </body>

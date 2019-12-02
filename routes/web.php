@@ -38,3 +38,13 @@ Route::get('/vote/create', 'VoteController@getCreate')
      ->name('vote.create');
 Route::post('/vote/create', 'VoteController@postCreate')
      ->name('vote.create');
+
+Route::get('/result/select_match', 'ResultController@getMatchOfResult')
+     ->name('result.select_match');
+Route::post('/result/select_match', 'ResultController@postMatchOfResult')
+     ->name('result.select_match');
+
+Route::get('/result/show', 'ResultController@getReadVote')
+     ->name('result.show');
+Route::post('/result/show', 'ResultController@postReadVote')
+     ->name('result.show');
