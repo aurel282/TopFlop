@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 
 
-use App\Http\Requests\Vote\CreateVoteRequest;
+use App\Http\Requests\Result\ResultSelectMatchRequest;
 use App\Models\Database\Match;
-use App\Service\CandidateService;
 use App\Service\MatchService;
-use App\Service\VoterService;
 use App\Service\VoteService;
 
 class ResultController extends Controller
@@ -30,17 +28,20 @@ class ResultController extends Controller
     }
 
     public function postMatchOfResult(
+        ResultSelectMatchRequest $resultSelectMatchRequest,
+        VoteService $voteService,
         MatchService $matchService
     )
     {
-        $matches = $matchService->getAllMatches();
+        $match = $matchService->getMatchById($resultSelectMatchRequest->get('match'));
 
-        return view(
-            'result.select_match',
+        return redirect()->route(
+            'result.show',
             [
-                'matches' => $matches,
+                'match' => $match
             ]
         );
+
     }
 
     public function getReadVote(
@@ -50,17 +51,20 @@ class ResultController extends Controller
     {
         $votes = $voteService->getUnreadVotesByMatch($match);
 
-
         if(count($votes) > 0)
         {
             return view(
-                'result.display_vote'
+                'result.result_vote',
+                [
+                    'match' => $match,
+                    'vote' => $votes->random()
+                ]
             );
         }
         else
         {
             return view(
-                'result.display_final_count'
+                'result.result_final'
             );
         }
     }
@@ -76,13 +80,17 @@ class ResultController extends Controller
         if(count($votes) > 0)
         {
             return view(
-                'result.display_vote'
+                'result.result_vote',
+                [
+                    'match' => $match,
+                    'vote' => $votes->random()
+                ]
             );
         }
         else
         {
             return view(
-                'result.display_final_count'
+                'result.result_final'
             );
         }
     }

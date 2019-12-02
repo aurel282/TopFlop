@@ -30,12 +30,12 @@
     <br />
     <div class="two fields">
         <div class="field required">
-            {{ Form::label('top_candidate', trans('vote.create.top_labed')) }}
+            {{ Form::label('top_candidate', trans('vote.create.top_label')) }}
             {{ Form::select('top_candidate', $candidates->pluck('name', 'id'), '',['class' => 'ui fluid normal dropdown']) }}
             {{ Form::textarea('top_text', null, ['placeholder' => trans('vote.create.top_text_placeholder')]) }}
         </div>
         <div class="field required">
-            {{ Form::label('flop_candidate', trans('vote.create.flop_labed')) }}
+            {{ Form::label('flop_candidate', trans('vote.create.flop_label')) }}
             {{ Form::select('flop_candidate', $candidates->pluck('name', 'id'), '',['class' => 'ui fluid normal dropdown']) }}
             {{ Form::textarea('flop_text', null, ['placeholder' => trans('vote.create.flop_text_placeholder')]) }}
         </div>

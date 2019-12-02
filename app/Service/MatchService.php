@@ -32,4 +32,9 @@ class MatchService extends AbstractService
     {
         return $this->_matchRepository->getAll()->get();
     }
+
+    public function getMatchById(int $match_id): ?Match
+    {
+        return $this->_matchRepository->getMatchById($match_id);
+    }
 }

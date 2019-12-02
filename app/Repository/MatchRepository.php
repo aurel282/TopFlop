@@ -26,7 +26,26 @@ class MatchRepository extends AbstractRepository
         return Match::create([
             'date' => $request['date'],
             'opponent' => $request['opponent'],
+            'result_seen' => false,
+            'vote_closed' => false,
         ]);
+    }
+
+    public function close_vote(Match $match): bool
+    {
+        return $match->update(
+            [
+            'vote_closed' => true,
+        ]);
+    }
+
+    public function reopen_vote(Match $match): bool
+    {
+        return $match->update(
+            [
+                'vote_closed' => false,
+                'result_seen' => false,
+            ]);
     }
 
     /**
@@ -42,7 +61,7 @@ class MatchRepository extends AbstractRepository
      *
      * @return Match|null
      */
-    public function getVoterById(int $match_id): ?Match
+    public function getMatchById(int $match_id): ?Match
     {
         return Match::query()
                     ->where('id', $match_id)

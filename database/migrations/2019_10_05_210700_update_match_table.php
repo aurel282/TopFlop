@@ -13,7 +13,7 @@ class UpdateMatchTable extends Migration
      */
     public function up()
     {
-        Schema::table('scores', function (Blueprint $table) {
+        Schema::table('matches', function (Blueprint $table) {
             $table->boolean('result_seen');
             $table->boolean('vote_closed');
         });
@@ -26,7 +26,7 @@ class UpdateMatchTable extends Migration
      */
     public function down()
     {
-        Schema::table('scores', function (Blueprint $table) {
+        Schema::table('matches', function (Blueprint $table) {
             $table->dropColumn('result_seen');
             $table->dropColumn('vote_closed');
         });

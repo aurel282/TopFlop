@@ -31,6 +31,21 @@ class Vote extends Eloquent
         'is_read',
     ];
 
+    public function flop_candidate()
+    {
+        return $this->hasOne(Candidate::class, 'id', 'flop_candidate_id');
+    }
+
+    public function top_candidate()
+    {
+        return $this->hasOne(Candidate::class, 'id', 'top_candidate_id');
+    }
+
+    public function match()
+    {
+        return $this->hasOne(Match::class);
+    }
+
     /**
 
     public function address()

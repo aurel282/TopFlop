@@ -44,7 +44,7 @@ Route::get('/result/select_match', 'ResultController@getMatchOfResult')
 Route::post('/result/select_match', 'ResultController@postMatchOfResult')
      ->name('result.select_match');
 
-Route::get('/result/show', 'ResultController@getReadVote')
+Route::get('{match}/result/show', 'ResultController@getReadVote')
      ->name('result.show');
-Route::post('/result/show', 'ResultController@postReadVote')
+Route::post('{match}/result/show', 'ResultController@postReadVote')
      ->name('result.show');

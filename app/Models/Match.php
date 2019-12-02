@@ -18,6 +18,8 @@ class Match extends Eloquent
     protected $fillable = [
         'opponent',
         'date',
+        'result_seen',
+        'vote_closed',
     ];
 
     public function voters()
