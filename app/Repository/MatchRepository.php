@@ -57,6 +57,15 @@ class MatchRepository extends AbstractRepository
     }
 
     /**
+     * @return Builder
+     */
+    public function getAllMatchesOpenForVotes(): Builder
+    {
+        return Match::query()
+            ->where('vote_closed', '=', false);
+    }
+
+    /**
      * @param int $match_id
      *
      * @return Match|null

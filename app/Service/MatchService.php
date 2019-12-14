@@ -33,8 +33,20 @@ class MatchService extends AbstractService
         return $this->_matchRepository->getAll()->get();
     }
 
+    public function getAllMatchesOpenForVotes(): Collection
+    {
+        return $this->_matchRepository->getAllMatchesOpenForVotes()->get();
+    }
+
     public function getMatchById(int $match_id): ?Match
     {
         return $this->_matchRepository->getMatchById($match_id);
     }
+
+    public function closeVote(int $match_id): bool
+    {
+        $match = $this->_matchRepository->getMatchById($match_id);
+        return $this->_matchRepository->close_vote($match);
+    }
+
 }

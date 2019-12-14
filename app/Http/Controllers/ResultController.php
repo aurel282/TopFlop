@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Result\ResultSelectMatchRequest;
 use App\Models\Database\Match;
 use App\Service\MatchService;
+use App\Service\ScoreService;
 use App\Service\VoteService;
 use Illuminate\Http\Request;
 
@@ -35,6 +36,7 @@ class ResultController extends Controller
     )
     {
         $match = $matchService->getMatchById($resultSelectMatchRequest->get('match'));
+        $matchService->closeVote($resultSelectMatchRequest['match']);
 
         return redirect()->route(
             'result.show',
@@ -77,6 +79,7 @@ class ResultController extends Controller
     public function postReadVote(
         Match $match,
         VoteService $voteService,
+        ScoreService $scoreService,
         Request $request
     )
     {
@@ -88,6 +91,7 @@ class ResultController extends Controller
 
         if(count($votes) > 0)
         {
+            $scoreService->updateSimpleScore($vote);
             return view(
                 'result.result_vote',
                 [
@@ -98,9 +102,11 @@ class ResultController extends Controller
         }
         else
         {
-            $tops = '';
-            $flops = '';
-            $ghosts = '';
+            $scoreService->updateLastScore($vote);
+
+            $tops = $scoreService->getAllTopForMatch($match);
+            $flops = $scoreService->getAllFlopForMatch($match);
+            $ghosts = $scoreService->getAllGhostsForMatch($match);
             return view(
                 'result.result_final',
                 [

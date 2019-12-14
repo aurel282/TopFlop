@@ -72,7 +72,7 @@ class VoteRepository extends AbstractRepository
      *
      * @return Vote|null
      */
-    public function getVoteById(int $vote_id): ?Model
+    public function getVoteById(int $vote_id): ?Vote
     {
         return Vote::query()
                    ->where('id', $vote_id)

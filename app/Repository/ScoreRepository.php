@@ -23,13 +23,41 @@ class ScoreRepository extends AbstractRepository
      *
      * @return Score
      */
-    public function create(array $request): Score
+    public function create(Match $match, Candidate $candidate): Score
     {
         return Score::create([
             'match_id' => $request['match_id'],
             'candidate_id' => $request['candidate_id'],
-            'score_flop' => $request['candidate_id'],
-            'score_top' => false,
+            'score_flop' => 0,
+            'score_top' => 0,
+        ]);
+    }
+
+    public function addOneScoreTop(Score $score): bool
+    {
+        return $score->update([
+            'score_top' => $score['score_top'] + 1,
+        ]);
+    }
+
+    public function addTwoScoreTop(Score $score): bool
+    {
+        return $score->update([
+            'score_top' => $score['score_top'] + 2,
+        ]);
+    }
+
+    public function addOneScoreFlop(Score $score): bool
+    {
+        return $score->update([
+            'score_flop' => $score['score_flop'] + 1,
+        ]);
+    }
+
+    public function addTwoScoreFlop(Score $score): bool
+    {
+        return $score->update([
+            'score_flop' => $score['score_flop'] + 2,
         ]);
     }
 
@@ -42,6 +70,26 @@ class ScoreRepository extends AbstractRepository
     {
         return Score::query()
             ->where('match_id', $match->id);
+    }
+
+    /**
+     * @return Builder
+     */
+    public function getAllTopByMatch(Match $match): Builder
+    {
+        return Score::query()
+            ->where('match_id', $match->id)
+            ->where('score_top', '>', 0);
+    }
+
+    /**
+     * @return Builder
+     */
+    public function getAllFlopByMatch(Match $match): Builder
+    {
+        return Score::query()
+            ->where('match_id', $match->id)
+            ->where('score_flop', '>', 0);
     }
 
     /**
@@ -71,5 +119,21 @@ class ScoreRepository extends AbstractRepository
                     ->where('match_id', $match->id)
                     ->first();
     }
+
+    /**
+     * @param Candidate $candidate
+     * @param Match $match
+     *
+     * @return bool
+     */
+    public function candidateHasScore(Candidate $candidate, Match $match): bool
+    {
+        return Score::query()
+            ->where('candidate_id', $candidate->id)
+            ->where('match_id', $match->id)
+            ->exists();
+    }
+
+
 
 }

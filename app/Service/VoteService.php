@@ -94,9 +94,9 @@ class VoteService extends AbstractService
     /**
      * @param int $vote_id
      *
-     * @return ?Vote
+     * @return Vote|null
      */
-    public function getVoteById(Vote $vote_id): ?Vote
+    public function getVoteById(int $vote_id): ?Vote
     {
         return $this->_voteRepository->getVoteById($vote_id);
     }
