@@ -16,6 +16,8 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.7.7/dist/semantic.min.css">
 	<link type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+	<script src="{{ asset('js/app.js') }}" defer></script>
+
 	<noscript>
 		<style type="text/css">
 			main {
@@ -27,14 +29,4 @@
 			}
 		</style>
 	</noscript>
-
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-25611166-11"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-
-		gtag('config', 'UA-25611166-11');
-	</script>
 </head>

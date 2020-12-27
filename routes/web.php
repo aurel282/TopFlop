@@ -12,9 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('oauth.login');
     })
-    ->name('home');
+    ->name('login');
 
 Route::get('/results', 'ResultController@getResult')
      ->name('result');

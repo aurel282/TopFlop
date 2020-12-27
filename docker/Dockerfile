@@ -1,5 +1,5 @@
 # Set master image
-FROM php:7.3-fpm-alpine
+FROM php:8-fpm-alpine
 
 # Set working directory
 WORKDIR /var/www/html

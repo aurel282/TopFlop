@@ -3,7 +3,7 @@
 
 @include('layout.components.head')
 
-<body style="background: white;" @yield('body_declaration')>
+<body id="app" style="background: white;" @yield('body_declaration')>
 <!--[if lt IE 10]>
 <p class="browsehappy">@lang('booking_create.ie_support.message')</p>
 <![endif]-->
